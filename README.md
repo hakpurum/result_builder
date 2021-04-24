@@ -5,7 +5,7 @@ It is a structure that allows the study of the result sets to be generically lis
 
 To use this plugin, add `result_builder` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-![flutter_onboard](onboard_list.gif)
+<img src="/hakpurum/result_builder/raw/main/onboard_list.gif" alt="flutter_onboard" style="max-width: 25%;">
 
 ## main.dart setState ListView Example
 
