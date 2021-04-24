@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Result<T> {
   String resultMessage;
   bool resultStatus;
-  T resultObject;
+  T? resultObject;
   String resultTrackingCode;
   bool isLoading = true;
 
@@ -42,9 +42,9 @@ class ResultErrorMessage extends StatelessWidget {
 }
 
 class ResultBuilder<T> extends StatelessWidget {
-  final Function builderSuccessful;
-  final Function builderUnSuccessful;
-  final Result<T> result;
+  final Function? builderSuccessful;
+  final Function? builderUnSuccessful;
+  final Result<T>? result;
 
   ResultBuilder(
       {
@@ -63,24 +63,25 @@ class ResultBuilder<T> extends StatelessWidget {
         child: ResultErrorMessage("builder parameter cannot be null!"),
       );
     }
-
-    if (result.isLoading) {
-      return Container(
-        child: Align(
-          alignment: Alignment.center,
-          child: CircularProgressIndicator(),
-        ),
-      );
-    } else {
-      if (result.resultStatus) {
-        return builderSuccessful();
+    else{
+      if (result!.isLoading) {
+        return Container(
+          child: Align(
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(),
+          ),
+        );
       } else {
-        if (builderUnSuccessful == null) {
-          return Container(
-            child: ResultErrorMessage(result.resultMessage),
-          );
+        if (result!.resultStatus) {
+          return builderSuccessful!();
         } else {
-          return builderUnSuccessful();
+          if (builderUnSuccessful == null) {
+            return Container(
+              child: ResultErrorMessage(result!.resultMessage),
+            );
+          } else {
+            return builderUnSuccessful!();
+          }
         }
       }
     }
