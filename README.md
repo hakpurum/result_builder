@@ -3,11 +3,9 @@ It is a structure that allows the study of the result sets to be generically lis
 
 ## Getting Started
 
-![flutter_onboard](flutter_onboard.gif)
-![flutter_onboard](flutter_onboard.gif)
-
-
 To use this plugin, add `result_builder` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+![flutter_onboard](onboard_list.gif)
 
 ## main.dart setState ListView Example
 
@@ -78,6 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 ```
+
+![flutter_onboard](onboard_form.gif)
 
 ## main.dart setState Form Example
 
