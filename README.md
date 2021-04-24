@@ -5,8 +5,7 @@ It is a structure that allows the study of the result sets to be generically lis
 
 To use this plugin, add `result_builder` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-### setState ListView Example
-#### main.dart
+## main.dart setState ListView Example
 
 ```dart  
 import 'package:flutter/material.dart';
@@ -75,8 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-##### setState Form Example
-###### main.dart
+## main.dart setState Form Example
 
 ```dart
 import 'package:flutter/material.dart';
