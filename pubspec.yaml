@@ -1,10 +1,10 @@
 name: result_builder
 description: It is a structure that allows the study of the result sets to be generically listened for each type.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/hakpurum/result_builder
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
