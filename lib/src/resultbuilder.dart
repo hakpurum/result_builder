@@ -7,7 +7,7 @@ class Result<T> {
   String resultTrackingCode;
   bool isLoading = true;
 
-  Result({this.resultStatus = true});
+  Result({this.resultTrackingCode = '',this.resultMessage = '',this.resultStatus = true});
 }
 
 class ResultErrorMessage extends StatelessWidget {
