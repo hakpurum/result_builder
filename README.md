@@ -155,3 +155,108 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
+## main.dart Getx Form Example
+```dart
+import 'package:flutter/material.dart';
+import 'package:result_builder/result_builder.dart';
+import 'package:get/get.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class LoginController extends GetxController {
+  final resultList = Result<bool>().obs;
+
+  @override
+  void onInit() {
+    pageLoad();
+    super.onInit();
+  }
+
+  void pageLoad() async {
+    var model = Result<bool>();
+    await Future.delayed(Duration(seconds: 2));
+    model.resultObject = false;
+    model.isLoading = false;
+    resultList(model);
+  }
+
+  void login() {
+    resultList(Result<bool>());
+    Future.delayed(Duration(seconds: 2)).then((value) => loginMethod());
+  }
+
+  loginMethod() {
+    var model = Result<bool>();
+    model.resultObject = true;
+    model.resultMessage = "Login Success.";
+    model.resultStatus = true;
+    model.isLoading = false;
+    resultList(model);
+  }
+}
+
+class MyApp extends StatelessWidget {
+  final loginController = Get.put(LoginController());
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter Demo Home Page"),
+        ),
+        body: Center(
+          child: buildBody(),
+        ),
+      ),
+    );
+  }
+
+  buildBody() {
+    return Obx((){
+      var result = loginController.resultList.value;
+      return ResultBuilder(
+        result: result,
+        builderSuccessful: (() {
+          return SingleChildScrollView(
+            padding: EdgeInsets.all(10),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Text("Username"),
+                  TextField(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(result.resultMessage,style: TextStyle(fontSize: 20,color:Colors.green,fontWeight: FontWeight.bold),),
+                  ),
+                  MaterialButton(
+                      color: Colors.blue,
+                      splashColor: Colors.white,
+                      height: 45,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text("Login",style: TextStyle(color: Colors.white),),
+                      onPressed: () {
+                        _formKey.currentState.save();
+                        loginController.login();
+                      })
+                ],
+              ),
+            ),
+          );
+        }),
+      );
+    });
+  }
+}
+
+```

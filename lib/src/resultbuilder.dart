@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 
 class Result<T> {
+  /// Result Message
   String resultMessage;
+
+  /// Result Status
   bool resultStatus;
+
+  /// Result Object
   T? resultObject;
+
+  /// Result TrackingCode
   String resultTrackingCode;
+
+  /// isLoading Indicator
   bool isLoading = true;
 
-  Result({this.resultTrackingCode = '',this.resultMessage = '',this.resultStatus = true});
+  Result({
+    this.resultObject,
+    this.resultMessage = '',
+    this.resultStatus = true,
+    this.resultTrackingCode = '',
+  });
 }
 
 class ResultErrorMessage extends StatelessWidget {
@@ -32,7 +46,11 @@ class ResultErrorMessage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(resultMessage,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red[900]),),
+              child: Text(
+                resultMessage,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.red[900]),
+              ),
             ),
           ],
         ),
@@ -47,10 +65,7 @@ class ResultBuilder<T> extends StatelessWidget {
   final Result<T>? result;
 
   ResultBuilder(
-      {
-        this.builderSuccessful,
-        this.builderUnSuccessful,
-        this.result});
+      {this.builderSuccessful, this.builderUnSuccessful, this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +77,7 @@ class ResultBuilder<T> extends StatelessWidget {
       return Container(
         child: ResultErrorMessage("builder parameter cannot be null!"),
       );
-    }
-    else{
+    } else {
       if (result!.isLoading) {
         return Container(
           child: Align(

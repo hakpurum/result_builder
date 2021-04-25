@@ -1,6 +1,6 @@
 name: result_builder
 description: It is a structure that allows the study of the result sets to be generically listened for each type.
-version: 0.0.3
+version: 0.0.5
 homepage: https://github.com/hakpurum/result_builder
 
 environment:
